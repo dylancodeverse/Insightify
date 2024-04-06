@@ -43,3 +43,23 @@ les operations a faire:
                         est a   5/10 personnaliteD
                         
 =====================================================================                        
+
+deroulement du processus de test de personnalite:
+    toutes les reponses de l'utilisateur seront etre mises dans un string [] qui va etre envoye dans le backend pour le traitement
+    Normalement dans la base , il y aura deja la liste des notes pour chaque reponse choisie par personnalite AS V0
+    Avec V0 , on cree une fonction (cote backend) qui va generer une requete sql dynamique join pour 
+        avoir les notes obtenues par l'utilisateur pour toutes les repoonses qu'il a fait (avec le string [])
+        Cette requete sql dynamique contiendra les fonctions d'aggregation necessaire (somme des notes group by  personnalite).
+
+    Finalement l'objet resultat doit ressembler a peu pres comme ceci:
+
+        ResulatDuTest (NoteParPersonnalite []):
+
+    Dans cet objet il y aura les fonctions suivantes:
+
+        calculer(String [] reponsesUtilisateur):
+            string sql=  genererRequeteSQL ();
+            NoteParPersonnalite[] v = new V0().select(sql);
+            setNoteParPersonnalite(v);
+
+        genererRequeteSQL():
