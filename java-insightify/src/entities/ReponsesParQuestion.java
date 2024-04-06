@@ -9,6 +9,16 @@ public class ReponsesParQuestion extends DynamicORM<ReponsesParQuestion> {
     String reponses;
     Integer questionsid;
 
+    public void insert(String reponses, String questionsId) throws Exception {
+        setQuestionsid(questionsId);
+        setReponses(reponses);
+        insert();
+    }
+
+    private void setQuestionsid(String questionsId2) {
+        setQuestionsid(Integer.parseInt(questionsId2));
+    }
+
     public Integer getId() {
         return id;
     }

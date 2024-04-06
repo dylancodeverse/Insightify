@@ -8,6 +8,11 @@ public class Questions extends DynamicORM<Questions> {
     Integer id;
     String questions;
 
+    public void insert(String questions) throws Exception {
+        setQuestions(questions);
+        insert();
+    }
+
     public Integer getId() {
         return id;
     }
@@ -20,7 +25,10 @@ public class Questions extends DynamicORM<Questions> {
         return questions;
     }
 
-    public void setQuestions(String questions) {
+    public void setQuestions(String questions) throws Exception {
+        if (questions.isBlank()) {
+            throw new Exception("Input vide non valide");
+        }
         this.questions = questions;
     }
 }
