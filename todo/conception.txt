@@ -1,0 +1,45 @@
+theme :test de personnalite:
+===================================================================
+les mots cles :
+        notion de personnalite
+
+        notion de question
+
+        notion de reponse
+
+        notion de note pour une personnalite pour chaque reponse
+exemple :
+        Si Koto a repondu "A" pour la premiere question
+            il pourrait avoir les notes suivantes:
+                0.8 personnalite A (enfant) (ou bien 8/10)
+                0.2 personnalite B (Jeune)  (2/10)
+                0.5 personnalite C (Vieux)  (5/10)
+
+====================================================================
+les donnees a persister:
+    personnalite
+    question
+    reponse possible par question (choix)
+    note pour chaque choix par personnalite
+
+====================================================================
+les operations a faire:
+    
+    - ajout de personnalite
+    
+    - ajout de nouvelles questions
+
+    - ajout de reponses possible
+
+    - assignation des notes pour chaque reponse par rapport aux differents personnalites
+
+    - calcul de notes pour un ensemble de reponses choisies:    
+        ceci permettra de savoir si la personne a une personnalite : A ou B ou C
+    
+        exemple de output apres le calcul:
+            La personne est a   8/10 personnaliteA 
+                        est a   2/10 personnaliteB
+                        est a   0/10 personnaliteC
+                        est a   5/10 personnaliteD
+                        
+=====================================================================                        
