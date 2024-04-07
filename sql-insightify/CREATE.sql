@@ -31,3 +31,15 @@ create table notesparreponseparpersonnalite (
     foreign key (personnalite) references personnalite(id)
 );
 
+create or replace view Complet0notesparreponseparpersonnalite as
+    select reponsesparquestion , personnalite , max(note) as note from (
+        select reponsesparquestion, personnalite , note from notesparreponseparpersonnalite
+        union all  select reponsesparquestion.id as reponsesparquestion , personnalite.id as personnalite , 0 as note from personnalite  cross join reponsesparquestion
+    ) AS smth group by reponsesparquestion , personnalite
+;
+
+create or replace view Completnotesparreponseparpersonnalite as 
+    select reponsesparquestion , personnalite.personnalite as personnalite , note from
+        Complet0notesparreponseparpersonnalite
+        join personnalite on Complet0notesparreponseparpersonnalite.personnalite = personnalite.id
+

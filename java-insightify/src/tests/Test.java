@@ -4,11 +4,16 @@ import entities.Notesparreponseparpersonnalite;
 import entities.Personnalite;
 import entities.Questions;
 import entities.ReponsesParQuestion;
+import entities.ResultatDuTest;
 
 public class Test {
 
     public static void main(String[] args) throws Exception {
-        assignationDesNotesParQuestionSelonPersonnalite();
+        getResult();
+    }
+
+    public static void getResult() throws Exception{
+        new ResultatDuTest().setNoteParPersonnalite(new String [] {"1"});
     }
 
     public static void assignationDesNotesParQuestionSelonPersonnalite() throws Exception {
@@ -20,7 +25,7 @@ public class Test {
     }
 
     public static void insertPersonnalite() throws Exception {
-        new Personnalite().insert("Parent");
+        new Personnalite().insert("Enfant");
     }
 
     public static void insertQuestions() throws Exception {
