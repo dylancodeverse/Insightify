@@ -11,7 +11,7 @@ public class Test {
 
     public static void main(String[] args) throws Exception {
         // assignationDesNotesParQuestionSelonPersonnalite();
-        questionnaires();
+        getResult();
     }
 
     // donnees pour les questionnaires

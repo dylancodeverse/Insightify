@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +57,7 @@ public class DynamicORM<T> extends ORM<T> {
 
     private Connection connection() throws Exception {
         String fileContent = readFromFile();
-        List<String> lst = fileContent.lines().toList();
+        List<String> lst = getLinesFromString(fileContent);
         String url = null, password = null, user = null;
         for (String string : lst) {
             if (string.contains("url")) {
@@ -73,6 +75,20 @@ public class DynamicORM<T> extends ORM<T> {
             throw new Exception("dynamic-connection.txt is incorrect");
 
         return DriverManager.getConnection(url, user, password);
+    }
+
+    // Méthode pour obtenir les lignes d'une chaîne de caractères
+    private List<String> getLinesFromString(String content) {
+        List<String> lines = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new StringReader(content))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace(); // Gérer l'exception selon votre cas
+        }
+        return lines;
     }
 
     public T[] select() throws Exception {
