@@ -9,6 +9,13 @@
 </head>
 <body>
     <h1>Insertion de Notes par Réponse par Personnalité</h1>
+    <% if (request.getParameter("error") != null) { %>
+        <p style="color: red;"><%= request.getParameter("error") %></p>
+    <% } else if (request.getParameter("success") != null) { %>
+        <p style="color: green;"><%= request.getParameter("success") %></p>
+    <% } %>
+
+    
     <form method="post" action="insert_notes.jsp">
         <label for="note">Note:</label>
         <input type="text" id="note" name="note"><br>

@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="entities.ReponsesParQuestion" %>
 <%
+    String errorMessage = null;
+    String successMessage = null;
     try {
         String reponse = request.getParameter("reponse");
         String idQuestion = request.getParameter("idQuestion");
         new ReponsesParQuestion().insert(reponse, idQuestion);
-        response.sendRedirect("success.jsp?message=Réponse insérée avec succès");
+        successMessage = "Inserted";
     } catch (Exception e) {
-        response.sendRedirect("error.jsp?message=Une erreur s'est produite lors de l'insertion de la réponse");
+        errorMessage = e.getMessage();
     }
+
+    response.sendRedirect("reponses.jsp" +
+    (errorMessage != null ? "?error=" + java.net.URLEncoder.encode(errorMessage, "UTF-8") : "") +
+    (successMessage != null ? "?success=" + java.net.URLEncoder.encode(successMessage, "UTF-8") : ""));
 %>

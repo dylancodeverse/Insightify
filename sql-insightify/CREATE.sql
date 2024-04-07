@@ -43,3 +43,5 @@ create or replace view Completnotesparreponseparpersonnalite as
         Complet0notesparreponseparpersonnalite
         join personnalite on Complet0notesparreponseparpersonnalite.personnalite = personnalite.id
 
+ALTER TABLE notesparreponseparpersonnalite
+ADD CONSTRAINT unique_combination UNIQUE (reponsesparquestion, personnalite);

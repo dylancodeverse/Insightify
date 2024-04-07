@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="entities.Personnalite" %>
 <%
+    String errorMessage = null;
+    String successMessage = null;
     try {
         String personnalite = request.getParameter("personnalite");
         new Personnalite().insert(personnalite);
-        response.sendRedirect("success.jsp?message=Personnalité insérée avec succès");
+        successMessage = "Personnalité insérée avec succès";
     } catch (Exception e) {
-        response.sendRedirect("error.jsp?message=Une erreur s'est produite lors de l'insertion de la personnalité");
+        errorMessage = e.getMessage();
     }
+
+    response.sendRedirect("personnalites.jsp" +
+    (errorMessage != null ? "?error=" + java.net.URLEncoder.encode(errorMessage, "UTF-8") : "") +
+    (successMessage != null ? "?success=" + java.net.URLEncoder.encode(successMessage, "UTF-8") : ""));
 %>

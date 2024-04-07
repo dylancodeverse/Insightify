@@ -8,7 +8,13 @@
 </head>
 <body>
     <h1>Insertion de Réponses par Question</h1>
+    <% if (request.getParameter("error") != null) { %>
+        <p style="color: red;"><%= request.getParameter("error") %></p>
+    <% } else if (request.getParameter("success") != null) { %>
+        <p style="color: green;"><%= request.getParameter("success") %></p>
+    <% } %>
     <form method="post" action="insert_reponses.jsp">
+
         <label for="reponse">Réponse:</label>
         <input type="text" id="reponse" name="reponse"><br>
         <label for="idQuestion">La Question:</label>

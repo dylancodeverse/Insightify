@@ -12,7 +12,7 @@ public class DynamicORM<T> extends ORM<T> {
 
     private String defaultFileName = "dynamic-connection.txt";
 
-    private String getFilePath() {
+    private String getFilePath() throws Exception {
         File currentDir = new File(System.getProperty("user.dir")); // Le répertoire de travail actuel
         List<File> foundFiles = new ArrayList<>();
         searchFile(currentDir, defaultFileName, foundFiles); // Commencer la recherche
@@ -20,8 +20,7 @@ public class DynamicORM<T> extends ORM<T> {
             // Retourner le chemin du premier fichier trouvé
             return foundFiles.get(0).getAbsolutePath();
         } else {
-            // Aucun fichier trouvé
-            return null;
+            throw new Exception("Aucun fichier de configuration depuis : " + currentDir.getAbsolutePath());
         }
     }
 
