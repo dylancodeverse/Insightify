@@ -18,9 +18,13 @@ create table reponsesparquestion(
 -- view qui relie une question avec ses reponses possible
 -- avec la colonne question
 
-create or replace view questionreponses as
-    select questions, reponses from questions join
-    reponsesparquestion on questions.id = reponsesparquestion.questionsid ;
+CREATE OR REPLACE VIEW questionreponses AS
+    SELECT questions.id AS questionsid, questions.questions,
+           STRING_AGG(reponsesparquestion.id::TEXT, 'fakooo') AS reponsesids,
+           STRING_AGG(reponsesparquestion.reponses, 'fakooo') AS reponses
+    FROM questions
+    JOIN reponsesparquestion ON questions.id = reponsesparquestion.questionsid
+    GROUP BY questions.id, questions.questions;
 
 create table notesparreponseparpersonnalite (
     id serial primary key,

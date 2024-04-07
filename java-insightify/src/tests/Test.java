@@ -2,6 +2,7 @@ package tests;
 
 import entities.Notesparreponseparpersonnalite;
 import entities.Personnalite;
+import entities.Questionreponses;
 import entities.Questions;
 import entities.ReponsesParQuestion;
 import entities.ResultatDuTest;
@@ -10,7 +11,13 @@ public class Test {
 
     public static void main(String[] args) throws Exception {
         // assignationDesNotesParQuestionSelonPersonnalite();
-        getResult();
+        questionnaires();
+    }
+
+    // donnees pour les questionnaires
+
+    public static void questionnaires() throws Exception {
+        new Questionreponses().select();
     }
 
     // affich
