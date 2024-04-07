@@ -13,6 +13,8 @@ public class Questions extends DynamicORM<Questions> {
         insert();
     }
 
+    
+
     public Integer getId() {
         return id;
     }

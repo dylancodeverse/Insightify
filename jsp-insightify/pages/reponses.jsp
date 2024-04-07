@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="votre.package.Questions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,11 @@
         <label for="reponse">Réponse:</label>
         <input type="text" id="reponse" name="reponse"><br>
         <label for="idQuestion">La Question:</label>
-        <input type="text" id="idQuestion" name="idQuestion"><br>
+        <select id="idQuestion" name="idQuestion">
+            <% for (Questions question : new Questions().select()) { %>
+                <option value="<%= question.getId() %>"><%= question.getQuestions() %></option>
+            <% } %>
+        </select><br>
         <input type="submit" value="Ajouter">
     </form>
 </body>

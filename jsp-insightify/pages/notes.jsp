@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="votre.package.ReponsesParQuestion" %>
+<%@ page import="votre.package.Personnalite" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +12,21 @@
     <form method="post" action="insert_notes.jsp">
         <label for="note">Note:</label>
         <input type="text" id="note" name="note"><br>
-        <label for="idReponse">ID de la Réponse:</label>
-        <input type="text" id="idReponse" name="idReponse"><br>
-        <label for="idPersonnalite">ID de la Personnalité:</label>
-        <input type="text" id="idPersonnalite" name="idPersonnalite"><br>
+        
+        <label for="idReponse">Réponse:</label>
+        <select id="idReponse" name="idReponse">
+            <% for (ReponsesParQuestion reponse : new ReponsesParQuestion().select()) { %>
+                <option value="<%= reponse.getId() %>"><%= reponse.getReponses() %></option>
+            <% } %>
+        </select><br>
+        
+        <label for="idPersonnalite">Personnalité:</label>
+        <select id="idPersonnalite" name="idPersonnalite">
+            <% for (Personnalite personnalite : new Personnalite().select()) { %>
+                <option value="<%= personnalite.getId() %>"><%= personnalite.getPersonnalite() %></option>
+            <% } %>
+        </select><br>
+        
         <input type="submit" value="Ajouter">
     </form>
 </body>
