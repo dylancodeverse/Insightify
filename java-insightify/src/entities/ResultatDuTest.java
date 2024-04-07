@@ -28,7 +28,7 @@ public class ResultatDuTest {
         }
         s = s.substring(0, s.lastIndexOf("or"));
 
-        s += " group by personnalite order by noteGenerale , personnalite";
+        s += " group by personnalite order by noteGenerale desc , personnalite asc";
 
         return s;
 
